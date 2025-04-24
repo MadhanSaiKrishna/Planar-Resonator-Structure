@@ -1,0 +1,553 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Design, Simulation and Analysis of a 5 GHz SRR Notch Filter Using Ansys HFSS}
+
+\author{\IEEEauthorblockN{Basireddy Khyathi Sri}
+\IEEEauthorblockA{\textit{Department of ECE} \\
+\textit{IIIT Hyderabad}\\
+Gachibowli, India \\
+khyathisri.basireddy@students.iiit.ac.in}
+\and
+\IEEEauthorblockN{Chamarthy Madhan Sai Krishna}
+\IEEEauthorblockA{\textit{Department of ECE} \\
+\textit{IIIT Hyderabad}\\
+Gachibowli, India \\
+chamarthymadhan.k@students.iiit.ac.in}
+\and
+\IEEEauthorblockN{Priyanshi Jain}
+\IEEEauthorblockA{\textit{Department of ECE} \\
+\textit{IIIT Hyderabad}\\
+Gachibowli, India \\
+priyanshi.jain@research.iiit.ac.in}
+\and
+% \hspace{2cm}
+\IEEEauthorblockN{Sanjana Sheela}
+\IEEEauthorblockA{\textit{Department of ECE} \\
+\textit{IIIT Hyderabad}\\
+Gachibowli, India \\
+sanjana.sheela@students.iiit.ac.in}
+\and
+\IEEEauthorblockN{Snigdha}
+\IEEEauthorblockA{\textit{Department of ECE} \\
+\textit{IIIT Hyderabad}\\
+Gachibowli, India \\
+snigdha.stp@students.iiit.ac.in}
+\and
+% \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+% \textit{name of organization (of Aff.)}\\
+% City, Country \\
+% email address or ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the design and simulation of a split ring resonator (SRR) based notch filter operating at a resonant frequency of 5 GHz. The design utilizes a microstrip line coupled with an SRR to achieve a band-stop response. The electromagnetic simulation and optimization of the filter are performed using ANSYS HFSS software. The fundamental principles of SRR notch filters are discussed, and the impact of geometrical parameters on the filter's characteristics is analyzed. This work demonstrates the potential of SRRs for creating compact notch filters suitable for various microwave applications, including the suppression of unwanted signals in communication systems.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Split Ring Resonator (SRR), Notch filter, 5GHz, Ansys HFSS, Simulation, Design, Microstrip Line, Metamaterials, Band-stop filter, Resonant frequency
+\end{IEEEkeywords}
+
+\section{To-do:}
+\begin{itemize}
+    \item The story of the paper should be along the lines of solving the problem (specified in the literature review) using SRR notch filter that we designed and it's application (embedding that in a patch antenna) and future direction of this research (tunability in the notch filter)
+\end{itemize}
+
+\section{Introduction}
+
+\subsection{Background on Metamaterials and Split Ring Resonators}
+
+Discuss the emergence of metamaterials and the pivotal role of SRRs in achieving negative permeability. Include a brief history and notable developments in the field.
+
+
+
+Metamaterials are artificially engineered structures designed to exhibit electromagnetic properties not found in naturally occurring substances. They are typically composed of conventional materials, such as metals or dielectrics, arranged in periodic patterns smaller than the wavelength of the electromagnetic signals they are intended to manipulate. This subwavelength structuring enables unique interactions with electromagnetic fields, allowing for control over wave propagation in ways unattainable with traditional materials.
+
+The emergence of metamaterials was driven by the limitations inherent in natural substances when interacting with electromagnetic (EM) waves. Most naturally occurring materials possess positive values of permittivity ($\varepsilon$) and permeability ($\mu$), which restrict their ability to manipulate EM fields. However, advanced applications such as super-resolution imaging, miniaturized antennas, and electromagnetic cloaking demand unconventional material responses that exceed the capabilities of nature.
+
+In 1968, Russian physicist Victor Veselago theoretically proposed that a material exhibiting simultaneously negative $\varepsilon$ and $\mu$ would possess a negative refractive index, leading to counterintuitive wave behavior such as reverse Snell's law. Since no such materials existed in nature, this proposal catalyzed research into engineered media that could replicate these properties. By the late 1990s, advancements in fabrication technologies and electromagnetic theory enabled the realization of these concepts, culminating in the creation of metamaterials. Among the most pivotal developments was the invention of the split-ring resonator (SRR), which enabled the achievement of negative permeability at microwave frequencies.
+
+Today, metamaterials have become essential in a wide range of applications including wireless communication, imaging, biomedical sensing, and defense systems. Their ability to precisely control electromagnetic wave behavior far surpasses the capabilities of conventional materials. Notably, metamaterials can exhibit a negative refractive index, causing electromagnetic waves to bend in the opposite direction to what occurs in standard media. Additionally, they allow for the generation of artificial magnetism at high frequencies, enable subwavelength focusing—an essential principle in the construction of superlenses that exceed the diffraction limit—and support electromagnetic cloaking by directing waves around objects to render them effectively invisible. These extraordinary characteristics are unlocking revolutionary advancements in sensing, imaging, communications, and stealth technologies.
+
+A split-ring resonator (SRR) is a fundamental building block in the design of metamaterials. It consists of a subwavelength metallic structure, typically made of two concentric rings with narrow splits placed on opposite sides. Together, these rings function as a resonant LC circuit, where the inductance (L) arises from the ring loops, and the capacitance (C) is formed across the gaps. When subjected to an alternating magnetic field perpendicular to the plane of the rings, the SRR supports circulating currents, which generate a magnetic response.
+
+Natural materials lack magnetic responsiveness at high frequencies—such as microwaves or terahertz—making SRRs indispensable for introducing artificial magnetism. These engineered resonators can:
+
+
+\begin{itemize}
+    \item Control magnetic permeability ($\mu$) at high frequencies;
+    \item Tune resonant frequencies by adjusting the SRR's geometry and dimensions;
+    \item Achieve negative permeability, a crucial requirement for realizing negative-index metamaterials.
+\end{itemize}
+
+SRRs have played a foundational role in the development of negative-index metamaterials and continue to be integral to modern applications such as radio frequency (RF) sensors, metasurfaces, and electromagnetic cloaking devices. By inducing magnetic moments through circulating currents, SRRs effectively mimic the magnetic behavior required for high-frequency manipulation, enabling material responses that are otherwise impossible with natural substances.
+
+
+
+\subsection{SRRs as Microwave Filters}
+Explain the principles behind SRRs acting as resonators in microwave circuits. Emphasize their compact size, frequency selectivity, and how they outperform traditional filter technologies in miniaturized systems.
+
+Split-Ring Resonators (SRRs) are highly effective resonators in microwave circuits, due to their unique structure and ability to resonate at specific electromagnetic frequencies. SRRs are artificial electromagnetic structures used to manipulate electromagnetic waves in various applications, including microwave filters, antennas, and other RF circuits. Their behavior as resonators is primarily due to their LC circuit-like properties, allowing them to selectively respond to electromagnetic fields at specific frequencies.
+
+Principles Behind SRR Resonance in Microwave Circuits
+Structure of SRRs:
+
+SRRs consist of two concentric metallic rings with small gaps or splits in the rings at opposite sides. The metallic rings are usually made of copper or other conductive materials, and the gaps in the rings play a crucial role in their resonant behavior.
+
+The gap in each ring creates a capacitance (C), while the ring itself forms an inductive (L) element due to the circulating current in the rings when they interact with an external electromagnetic field.
+
+
+
+Split-Ring Resonators (SRRs) operate as notch filters by exploiting their resonant properties. As an LC circuit, the SRR resonates at a specific frequency, \( f_0 = \frac{1}{2\pi \sqrt{LC}} \), where \( L \) and \( C \) are the inductance and capacitance of the SRR, respectively. At this resonant frequency, the impedance of the SRR becomes minimal, allowing it to absorb electromagnetic energy and block signals at \( f_0 \). The SRR's frequency selectivity is sharp and can be modeled by the transfer function:
+
+\[
+H(f) = \frac{1}{1 + j \frac{f - f_0}{\Delta f}},
+\]
+
+where \( \Delta f \) represents the bandwidth of the notch, and the quality factor (Q) determines the sharpness of the resonance. A higher Q factor leads to a narrower and more precise notch, enabling SRRs to filter out a narrow band of frequencies while allowing others to pass through. This characteristic makes SRRs ideal for miniaturized microwave circuits, where they function as efficient notch filters for applications such as wireless communication, radar, and RF sensors.
+
+
+LC Resonance:
+
+The SRR functions as a resonant LC circuit (inductance-capacitance), where the inductance comes from the circulating current within the ring and the capacitance comes from the gap in the ring.
+
+When an electromagnetic wave of a specific frequency interacts with the SRR, the structure absorbs energy at its resonant frequency, creating a strong magnetic response. The SRR essentially behaves as a magnetic resonator at this frequency, with the induced currents in the rings mimicking the behavior of a magnetic dipole.
+
+
+
+Resonance Behavior:
+
+The resonance frequency of an SRR depends on the geometry of the rings (such as ring size, gap width, and material properties). At this frequency, the SRR exhibits maximum interaction with the electromagnetic wave, which leads to either resonance absorption (filtering certain frequencies) or radiation of microwave signals in a controlled manner.
+
+The resonance frequency of SRRs can be tuned by altering the size, shape, or orientation of the rings or the gap, offering a high level of control in designing microwave circuits for specific applications.
+
+Magnetic Response:
+
+SRRs are particularly valuable because they can exhibit a magnetic response at microwave frequencies, something that natural materials do not typically provide at these frequencies. This artificial magnetism allows SRRs to manipulate electromagnetic waves in ways that conventional materials cannot.
+
+The resonance in the SRR can enhance or attenuate certain frequency bands of the electromagnetic spectrum, making them ideal for applications like microwave filtering, tuning circuits, and sensors.
+
+Applications of SRRs as Resonators in Microwave Circuits
+Microwave Filters:
+
+SRRs can be used in notch filters, where they selectively block or attenuate specific frequencies while allowing others to pass. This is achieved by tuning the resonant frequency of the SRRs to match the undesired frequency, thereby absorbing or scattering the energy at that frequency.
+
+They can also be used to create band-pass filters that only allow certain frequency bands to pass through, which is useful in communication systems and RF applications.
+
+Tuning and Frequency Control:
+
+SRRs provide excellent frequency selectivity and can be tuned over a broad frequency range by adjusting their geometry. This makes them highly versatile for use in circuits where precise control over the resonant frequency is required, such as in microwave oscillators and sensors.
+
+Compact and Miniaturized Designs:
+
+Due to their subwavelength size, SRRs enable the design of miniaturized microwave circuits, which is essential for modern, space-constrained applications in wireless communication, radar, and microwave systems.
+
+Their ability to operate effectively at small sizes allows for integration into compact systems, such as system-on-chip (SoC) designs and microwave integrated circuits (MICs).
+
+Metamaterials and Metasurfaces:
+
+SRRs are often incorporated into larger metasurfaces or metamaterials that can manipulate electromagnetic waves in sophisticated ways, such as controlling the propagation direction, polarization, or focusing of the waves.
+
+They are used in applications like stealth technology, beam steering, and microwave imaging, where advanced control over wave behavior is necessary.
+
+Advantages Over Traditional Resonators
+Smaller Size: Traditional resonators often require large inductive and capacitive components to achieve resonance, which can be bulky and difficult to integrate into small systems. SRRs, due to their subwavelength size, allow for much smaller resonant circuits without sacrificing performance.
+
+Frequency Tunability: SRRs can be easily tuned by adjusting their geometry, making them more flexible than traditional filters and resonators, which may have limited tuning capabilities.
+
+Enhanced Magnetic Response: SRRs can generate artificial magnetism, which allows for the manipulation of electromagnetic waves in ways that are not possible with conventional materials, particularly at microwave and terahertz frequencies.
+
+1. Compact Size: Split-Ring Resonators (SRRs) are inherently subwavelength structures, meaning they are much smaller than the wavelength of the electromagnetic signal they interact with. This compactness is crucial for modern communication and sensing systems that require miniaturized designs. For example:
+
+Traditional resonators, such as inductors and capacitors used in microwave filters, can occupy a considerable amount of space in a circuit. These components need to have larger physical dimensions to resonate at lower frequencies, leading to bulkier systems.
+
+SRRs, on the other hand, can achieve resonance at similar or even higher frequencies while being significantly smaller. This allows for integration into compact systems, such as system-on-chip (SoC) designs, microwave integrated circuits (MICs), and wearable electronics, where space is at a premium.
+
+Example: In communication devices such as smartphones, the compact size of SRRs enables their use in microwave filters and antenna systems, allowing manufacturers to create smaller, lighter devices without compromising performance.
+
+2. Frequency Selectivity: One of the key advantages of SRRs is their frequency selectivity. Due to their design, SRRs resonate at specific frequencies and can be tailored to interact with electromagnetic waves at those frequencies. This selectivity is highly tunable by adjusting their size, shape, or material properties.
+
+SRRs exhibit sharp resonance peaks at specific frequencies, meaning they can selectively absorb or transmit certain frequencies, which is vital for filtering unwanted signals.
+
+Traditional filters, such as LC circuits (composed of inductors and capacitors), often have broader resonance bands, making them less selective and more prone to signal distortion at their resonant frequency. On the other hand, SRRs provide narrow-band filtering with high precision, allowing them to isolate a specific frequency or narrow band of frequencies without affecting nearby channels.
+
+Example: In wireless communication systems, SRRs can be designed to filter out unwanted noise at specific frequencies, improving signal quality and reducing interference. This precision is especially important in dense, high-frequency environments like 5G and Wi-Fi networks.
+
+3. Advantages Over Traditional Filter Technologies in Miniaturized Systems: SRRs offer several advantages over traditional filter technologies, especially when working with miniaturized systems where size, efficiency, and performance are critical:
+
+Reduced Size and Integration: Traditional filters, such as those based on large inductors and capacitors, take up valuable space in circuits. In contrast, SRRs are highly miniaturized, making them ideal for integration into compact, high-performance systems where size limitations are a concern.
+
+Enhanced Performance in High-Frequency Applications: Traditional components may struggle to perform efficiently at microwave or terahertz frequencies due to their bulk and the difficulty of tuning them at high speeds. SRRs, however, can be designed to resonate at microwave frequencies, making them highly effective for high-frequency filtering applications, such as radar, satellite communications, and medical imaging systems.
+
+Tuning Flexibility: SRRs are highly flexible and can be dynamically tuned to respond to changes in the operating frequency by adjusting the geometry of the resonator or the materials used. Traditional filter technologies often lack this level of tuning flexibility, requiring physical alterations or multiple components to achieve frequency adjustments.
+
+Example: In advanced radar systems, SRRs are used as frequency-selective surfaces that can be dynamically tuned to block specific interference frequencies while allowing desired signal frequencies to pass. Traditional filters would require larger, more complex systems to achieve similar performance, making SRRs the more efficient and effective solution.
+
+4. Application in Modern Systems: SRRs are critical in applications that demand both high performance and small form factors. These applications include:
+
+Wireless Communication: For systems like 5G networks, Wi-Fi, and Bluetooth, SRRs provide enhanced frequency selectivity, low insertion loss, and compactness that are essential for high-speed data transmission in small devices.
+
+Microwave Imaging: In medical imaging and non-destructive testing, SRRs offer narrow-band filtering and high magnetic resonance, which are essential for high-resolution imaging systems.
+
+Wearable Electronics: SRRs are ideal for wearables that require efficient electromagnetic wave control in compact packages, enabling features such as smart sensors and high-frequency communication in small devices.
+
+Conclusion
+In summary, SRRs stand out in microwave circuits and miniaturized systems due to their compact size, precise frequency selectivity, and the superior performance they offer compared to traditional filter technologies. Their ability to be designed for specific frequencies, combined with their miniaturization and tuning flexibility, allows them to fit seamlessly into advanced communication systems, RF applications, and miniaturized electronics where traditional technologies would fall short. As a result, SRRs enable the development of smaller, more efficient devices without compromising on the quality of performance.
+
+
+
+\subsection{Literature Review}
+Survey recent studies and designs of SRR-based filters. Identify common techniques, gaps in performance (e.g., limited tunability, large footprints), and the scope for innovation.
+
+
+Problem statement that our project tries to solve\\ 
+Designing a split ring resonator (SRR) notch filter for 5 GHz offers a compact and effective solution to this problem. By strategically integrating an SRR with a microstrip line, we can create a filter that selectively attenuates signals around the 5 GHz resonant frequency. This allows us to precisely block unwanted interference from other devices operating in this band, thus improving the clarity and reliability of the desired communication signals. The small size of SRRs, often less than one-tenth of the wavelength , makes them particularly attractive for miniaturized devices where space is limited. Therefore, the motivation for this project is to address the growing challenge of RF interference in the 5 GHz band by designing and simulating a compact SRR notch filter capable of selectively eliminating unwanted signals, ensuring better performance for wireless communication systems.
+
+
+
+\subsection{Motivation and Objectives}
+Clarify the design goals—compactness, sharp notch near 5 GHz, ease of simulation in HFSS. Highlight the novel aspects of your approach and how it addresses the gaps identified.
+
+\subsection{Paper Organization}
+Outline the structure of the paper for the reader.
+
+\section{Theoretical Framework}
+
+\subsection{Electromagnetic Theory of SRRs}
+Present Maxwell’s equations relevant to the SRR’s operation. Introduce resonance behavior with supporting math.
+
+\subsection{Equivalent Circuit Models}
+Model the SRR as an LC resonator. Derive relationships between the geometric parameters and the lumped elements.
+
+\subsection{Coupling Mechanisms}
+Differentiate electric vs. magnetic coupling with field diagrams or schematics. Explain near-field interaction with microstrip lines.
+
+\subsection{Notch Filter Characteristics}
+Introduce key parameters: center frequency, insertion loss, bandwidth, return loss, quality factor. Discuss notch sharpness and selectivity.
+
+\subsection{Design Equations for SRRs}
+Provide analytical equations relating SRR dimensions to resonant frequency. Set the basis for initial geometry selection.
+
+\section{Design Methodology}
+
+\subsection{Design Requirements and Specifications}
+List the required performance: 5 GHz center, target bandwidth, notch depth, substrate limitations, and footprint constraints.
+
+\subsection{Substrate Selection and Microstrip Design}
+Describe chosen substrate (e.g., FR4 or Rogers), its dielectric constant, thickness, and loss tangent. Calculate 50-ohm microstrip width.
+
+\subsection{SRR Topology Selection}
+Compare various geometries (square, circular, spiral). Justify your selection based on performance and ease of fabrication.
+
+\subsection{Parametric Analysis Framework}
+Outline which parameters (gap, ring width, spacing) are to be swept in simulation. Describe your approach to optimization.
+
+\subsection{Coupling Configuration}
+Describe SRR placement relative to the microstrip. Provide geometry layout and explain expected coupling mode.
+
+\subsection{Expected Performance}
+Estimate resonant frequency using derived equations. Predict notch depth and bandwidth.
+
+\section{Simulation Methodology}
+
+\subsection{HFSS Simulation Environment Setup}
+Describe the overall simulation environment and settings.
+
+\subsection{Material Properties and Model Creation}
+Assign dielectric and conductor properties. Detail 3D model dimensions and layers in HFSS.
+
+\subsection{Excitation and Boundary Conditions}
+Explain port settings and boundary types (e.g., radiation boundary). Validate open-space behavior.
+
+\subsection{Advanced Simulation Techniques}
+Discuss meshing strategies, adaptive refinement, and convergence tests.
+
+\subsection{Parameter Sweep Configuration}
+Explain how design variables were swept for optimization. Mention use of design sets or parameter studies.
+
+\subsection{Post-Processing Methods}
+Outline how S-parameters, return loss, and electric/magnetic fields were extracted and visualized.
+
+\section{Results and Analysis}
+
+\subsection{S-Parameter Results}
+Present \textit{S21} and \textit{S11} plots. Highlight the notch and overall filter performance.
+
+\subsection{Field Distribution Visualization}
+Include field snapshots at resonance to illustrate energy concentration in the SRR.
+
+\subsection{Parametric Study Results}
+Show how performance metrics vary with changes in SRR geometry. Include plots or tables.
+
+\subsection{Bandwidth Control Mechanisms}
+Discuss how tuning gap or ring dimensions controls notch width.
+
+\subsection{Performance Benchmarking}
+Compare your filter with other 5 GHz SRR filters from literature in terms of size, Q-factor, rejection level, etc.
+
+\subsection{Practical Implementation Considerations}
+Discuss impact of fabrication errors, etching resolution, and substrate tolerances on real-world performance.
+
+\section{Applications and Future direction of Research}
+
+\subsection{Wireless Communication Systems}
+Explain application in Wi-Fi, WLAN, and radar systems operating around 5 GHz.
+
+\subsection{Integration with Other Components}
+Suggest integration with RF front ends, amplifiers, or antennas.
+
+\subsection{Tunable and Reconfigurable Extensions}
+Discuss possibility of incorporating varactors, MEMS, or other tunable elements.
+
+\subsection{Multi-band Filter Extensions}
+Propose adding multiple SRRs or multi-ring structures for dual-band or multi-band notch response.
+
+\section{Conclusion}
+
+\subsection{Summary of Findings}
+Summarize key achievements—resonant frequency, notch performance, and compactness.
+
+\subsection{Significance of the Results}
+Emphasize how your design adds value to current RF/microwave filtering solutions.
+
+\subsection{Limitations and Future Work}
+Address design limitations, simulation constraints, and propose future improvements (e.g., experimental validation, reconfigurability).
+
+
+
+% \section{Introduction}
+% This document is a model and instructions for \LaTeX.
+% Please observe the conference page limits. 
+
+% \section{Ease of Use}
+
+% \subsection{Maintaining the Integrity of the Specifications}
+
+% The IEEEtran class file is used to format your paper and style the text. All margins, 
+% column widths, line spaces, and text fonts are prescribed; please do not 
+% alter them. You may note peculiarities. For example, the head margin
+% measures proportionately more than is customary. This measurement 
+% and others are deliberate, using specifications that anticipate your paper 
+% as one part of the entire proceedings, and not as an independent document. 
+% Please do not revise any of the current designations.
+
+% \section{Prepare Your Paper Before Styling}
+% Before you begin to format your paper, first write and save the content as a 
+% separate text file. Complete all content and organizational editing before 
+% formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
+% proofreading, spelling and grammar.
+
+% Keep your text and graphic files separate until after the text has been 
+% formatted and styled. Do not number text heads---{\LaTeX} will do that 
+% for you.
+
+% \subsection{Abbreviations and Acronyms}\label{AA}
+% Define abbreviations and acronyms the first time they are used in the text, 
+% even after they have been defined in the abstract. Abbreviations such as 
+% IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use 
+% abbreviations in the title or heads unless they are unavoidable.
+
+% \subsection{Units}
+% \begin{itemize}
+% \item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
+% \item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
+% \item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
+% \item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
+% \end{itemize}
+
+% \subsection{Equations}
+% Number equations consecutively. To make your 
+% equations more compact, you may use the solidus (~/~), the exp function, or 
+% appropriate exponents. Italicize Roman symbols for quantities and variables, 
+% but not Greek symbols. Use a long dash rather than a hyphen for a minus 
+% sign. Punctuate equations with commas or periods when they are part of a 
+% sentence, as in:
+% \begin{equation}
+% a+b=\gamma\label{eq}
+% \end{equation}
+
+% Be sure that the 
+% symbols in your equation have been defined before or immediately following 
+% the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
+% the beginning of a sentence: ``Equation \eqref{eq} is . . .''
+
+% \subsection{\LaTeX-Specific Advice}
+
+% Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
+% of ``hard'' references (e.g., \verb|(1)|). That will make it possible
+% to combine sections, add equations, or change the order of figures or
+% citations without having to go through the file line by line.
+
+% Please don't use the \verb|{eqnarray}| equation environment. Use
+% \verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
+% environment leaves unsightly spaces around relation symbols.
+
+% Please note that the \verb|{subequations}| environment in {\LaTeX}
+% will increment the main equation counter even when there are no
+% equation numbers displayed. If you forget that, you might write an
+% article in which the equation numbers skip from (17) to (20), causing
+% the copy editors to wonder if you've discovered a new method of
+% counting.
+
+% {\BibTeX} does not work by magic. It doesn't get the bibliographic
+% data from thin air but from .bib files. If you use {\BibTeX} to produce a
+% bibliography you must send the .bib files. 
+
+% {\LaTeX} can't read your mind. If you assign the same label to a
+% subsubsection and a table, you might find that Table I has been cross
+% referenced as Table IV-B3. 
+
+% {\LaTeX} does not have precognitive abilities. If you put a
+% \verb|\label| command before the command that updates the counter it's
+% supposed to be using, the label will pick up the last counter to be
+% cross referenced instead. In particular, a \verb|\label| command
+% should not go before the caption of a figure or a table.
+
+% Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
+% will not stop equation numbers inside \verb|{array}| (there won't be
+% any anyway) and it might stop a wanted equation number in the
+% surrounding equation.
+
+% \subsection{Some Common Mistakes}\label{SCM}
+% \begin{itemize}
+% \item The word ``data'' is plural, not singular.
+% \item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
+% \item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
+% \item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
+% \item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
+% \item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
+% \item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
+% \item Do not confuse ``imply'' and ``infer''.
+% \item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
+% \item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
+% \item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
+% \end{itemize}
+% An excellent style manual for science writers is \cite{b7}.
+
+% \subsection{Authors and Affiliations}
+% \textbf{The class file is designed for, but not limited to, six authors.} A 
+% minimum of one author is required for all conference articles. Author names 
+% should be listed starting from left to right and then moving down to the 
+% next line. This is the author sequence that will be used in future citations 
+% and by indexing services. Names should not be listed in columns nor group by 
+% affiliation. Please keep your affiliations as succinct as possible (for 
+% example, do not differentiate among departments of the same organization).
+
+% \subsection{Identify the Headings}
+% Headings, or heads, are organizational devices that guide the reader through 
+% your paper. There are two types: component heads and text heads.
+
+% Component heads identify the different components of your paper and are not 
+% topically subordinate to each other. Examples include Acknowledgments and 
+% References and, for these, the correct style to use is ``Heading 5''. Use 
+% ``figure caption'' for your Figure captions, and ``table head'' for your 
+% table title. Run-in heads, such as ``Abstract'', will require you to apply a 
+% style (in this case, italic) in addition to the style provided by the drop 
+% down menu to differentiate the head from the text.
+
+% Text heads organize the topics on a relational, hierarchical basis. For 
+% example, the paper title is the primary text head because all subsequent 
+% material relates and elaborates on this one topic. If there are two or more 
+% sub-topics, the next level head (uppercase Roman numerals) should be used 
+% and, conversely, if there are not at least two sub-topics, then no subheads 
+% should be introduced.
+
+% \subsection{Figures and Tables}
+% \paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
+% bottom of columns. Avoid placing them in the middle of columns. Large 
+% figures and tables may span across both columns. Figure captions should be 
+% below the figures; table heads should appear above the tables. Insert 
+% figures and tables after they are cited in the text. Use the abbreviation 
+% ``Fig.~\ref{fig}'', even at the beginning of a sentence.
+
+% \begin{table}[htbp]
+% \caption{Table Type Styles}
+% \begin{center}
+% \begin{tabular}{|c|c|c|c|}
+% \hline
+% \textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
+% \cline{2-4} 
+% \textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
+% \hline
+% copy& More table copy$^{\mathrm{a}}$& &  \\
+% \hline
+% \multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+% \end{tabular}
+% \label{tab1}
+% \end{center}
+% \end{table}
+
+% \begin{figure}[htbp]
+% \centerline{\includegraphics{fig1.png}}
+% \caption{Example of a figure caption.}
+% \label{fig}
+% \end{figure}
+
+% Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
+% rather than symbols or abbreviations when writing Figure axis labels to 
+% avoid confusing the reader. As an example, write the quantity 
+% ``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
+% units in the label, present them within parentheses. Do not label axes only 
+% with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
+% \{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
+% quantities and units. For example, write ``Temperature (K)'', not 
+% ``Temperature/K''.
+
+% \section*{Acknowledgment}
+
+% The preferred spelling of the word ``acknowledgment'' in America is without 
+% an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
+% G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
+% acknowledgments in the unnumbered footnote on the first page.
+
+% \section*{References}
+
+% Please number citations consecutively within brackets \cite{b1}. The 
+% sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
+% number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
+% the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
+
+% Number footnotes separately in superscripts. Place the actual footnote at 
+% the bottom of the column in which it was cited. Do not put footnotes in the 
+% abstract or reference list. Use letters for table footnotes.
+
+% Unless there are six authors or more give all authors' names; do not use 
+% ``et al.''. Papers that have not been published, even if they have been 
+% submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
+% that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
+% Capitalize only the first word in a paper title, except for proper nouns and 
+% element symbols.
+
+% For papers published in translation journals, please give the English 
+% citation first, followed by the original foreign-language citation \cite{b6}.
+
+% \begin{thebibliography}{00}
+% \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
+% \bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
+% \bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
+% \bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
+% \bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
+% \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
+% \bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+% \end{thebibliography}
+% \vspace{12pt}
+% \color{red}
+% IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+
+\end{document}
