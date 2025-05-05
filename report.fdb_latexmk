@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745578537.66996 "c:/Users/madha/Desktop/Planar-Resonator-Structure/report.tex" "report.pdf" "report" 1745578538.48852 0
+["pdflatex"] 1746456185.37695 "c:/Users/madha/Desktop/Planar-Resonator-Structure/report.tex" "report.pdf" "report" 1746456186.05744 0
   "C:/Users/madha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1745521539 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/madha/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1745497200 24225046 55ec7b4ab46b4cc900ce8201fad20a66 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -20,10 +20,7 @@
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1233951854 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1233951854 940 228d6584342e91276bf566bcf9716b83 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
-  "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1247596667 31809 8670ca339bf94e56da1fc21c80635e2a ""
-  "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb" 1136833548 44729 fea0975e20ec51c992338362f05f1146 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb" 1136833548 44656 0cbca70e0534538582128f6b54593cca ""
@@ -71,9 +68,9 @@
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1704400941 30006 57b07afb710ee2f649c65cfbafda39c1 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 15056f4a61917ceed3a44e4ac11fcc52 ""
   "C:/Users/madha/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/madha/Desktop/Planar-Resonator-Structure/report.tex" 1745500412 39181 5919a17b9fc08d7313d6875f11d556b6 ""
-  "report.aux" 1745578538 5505 685e838c553647e9a627f199f20a6dfe "pdflatex"
-  "report.tex" 1745500412 39181 5919a17b9fc08d7313d6875f11d556b6 ""
+  "c:/Users/madha/Desktop/Planar-Resonator-Structure/report.tex" 1746456184 22575 09b13327373b8aeaf63fc02cf8f66e49 ""
+  "report.aux" 1746456185 5247 e7a660efa58dca94f5303b668aac30c7 "pdflatex"
+  "report.tex" 1746456184 22575 09b13327373b8aeaf63fc02cf8f66e49 ""
   (generated)
   "report.aux"
   "report.log"

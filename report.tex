@@ -20,32 +20,37 @@
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
-khyathisri.basireddy@students.iiit.ac.in}
+khyathisri.basireddy@students.iiit.ac.in \\
+\textbf{Contribution:} Circular SRR design,\\ Quarter wave transformer}
 \and
 \IEEEauthorblockN{Chamarthy Madhan Sai Krishna}
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
-chamarthymadhan.k@students.iiit.ac.in}
+chamarthymadhan.k@students.iiit.ac.in\\
+\textbf{Contribution:} Literature review, Report, \\ Quarter wave transformer}
 \and
 \IEEEauthorblockN{Priyanshi Jain}
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
-priyanshi.jain@research.iiit.ac.in}
+priyanshi.jain@research.iiit.ac.in\\
+\textbf{Contribution:} --}
 \and
 % \hspace{2cm}
 \IEEEauthorblockN{Sanjana Sheela}
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
-sanjana.sheela@students.iiit.ac.in}
+sanjana.sheela@students.iiit.ac.in\\
+\textbf{Contribution:} Literature review, Electric coupling,\\ Square SRR}
 \and
 \IEEEauthorblockN{Snigdha}
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
-snigdha.stp@students.iiit.ac.in}
+snigdha.stp@students.iiit.ac.in\\
+\textbf{Contribution:} Quarter Wave Transformer, Impedance Matching, }
 \and
 % \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
 % \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
@@ -67,165 +72,30 @@ Split Ring Resonator (SRR), Notch filter, 5GHz, Ansys HFSS, Simulation, Design, 
 \section{To-do:}
 \begin{itemize}
     \item The story of the paper should be along the lines of solving the problem (specified in the literature review) using SRR notch filter that we designed and it's application (embedding that in a patch antenna) and future direction of this research (tunability in the notch filter)
+    \item Explanation of the design and its properties
+    \item Calculations for resonance frequency, quality factor, and sensitivity
+    \item Final result and conclusion
+    \item Screenshots from HFSS explaining the design
+    \item Introduction, Theoretical framework, Design Methodology, Simulation Methodology, Results and Analysis, Applications and Future direction of Research, Conclusion
 \end{itemize}
 
 \section{Introduction}
 
-\subsection{Background on Metamaterials and Split Ring Resonators}
 
-Discuss the emergence of metamaterials and the pivotal role of SRRs in achieving negative permeability. Include a brief history and notable developments in the field.
-
-
-
-Metamaterials are artificially engineered structures designed to exhibit electromagnetic properties not found in naturally occurring substances. They are typically composed of conventional materials, such as metals or dielectrics, arranged in periodic patterns smaller than the wavelength of the electromagnetic signals they are intended to manipulate. This subwavelength structuring enables unique interactions with electromagnetic fields, allowing for control over wave propagation in ways unattainable with traditional materials.
-
-The emergence of metamaterials was driven by the limitations inherent in natural substances when interacting with electromagnetic (EM) waves. Most naturally occurring materials possess positive values of permittivity ($\varepsilon$) and permeability ($\mu$), which restrict their ability to manipulate EM fields. However, advanced applications such as super-resolution imaging, miniaturized antennas, and electromagnetic cloaking demand unconventional material responses that exceed the capabilities of nature.
-
-In 1968, Russian physicist Victor Veselago theoretically proposed that a material exhibiting simultaneously negative $\varepsilon$ and $\mu$ would possess a negative refractive index, leading to counterintuitive wave behavior such as reverse Snell's law. Since no such materials existed in nature, this proposal catalyzed research into engineered media that could replicate these properties. By the late 1990s, advancements in fabrication technologies and electromagnetic theory enabled the realization of these concepts, culminating in the creation of metamaterials. Among the most pivotal developments was the invention of the split-ring resonator (SRR), which enabled the achievement of negative permeability at microwave frequencies.
-
-Today, metamaterials have become essential in a wide range of applications including wireless communication, imaging, biomedical sensing, and defense systems. Their ability to precisely control electromagnetic wave behavior far surpasses the capabilities of conventional materials. Notably, metamaterials can exhibit a negative refractive index, causing electromagnetic waves to bend in the opposite direction to what occurs in standard media. Additionally, they allow for the generation of artificial magnetism at high frequencies, enable subwavelength focusing—an essential principle in the construction of superlenses that exceed the diffraction limit—and support electromagnetic cloaking by directing waves around objects to render them effectively invisible. These extraordinary characteristics are unlocking revolutionary advancements in sensing, imaging, communications, and stealth technologies.
-
-A split-ring resonator (SRR) is a fundamental building block in the design of metamaterials. It consists of a subwavelength metallic structure, typically made of two concentric rings with narrow splits placed on opposite sides. Together, these rings function as a resonant LC circuit, where the inductance (L) arises from the ring loops, and the capacitance (C) is formed across the gaps. When subjected to an alternating magnetic field perpendicular to the plane of the rings, the SRR supports circulating currents, which generate a magnetic response.
-
-Natural materials lack magnetic responsiveness at high frequencies—such as microwaves or terahertz—making SRRs indispensable for introducing artificial magnetism. These engineered resonators can:
-
-
-\begin{itemize}
-    \item Control magnetic permeability ($\mu$) at high frequencies;
-    \item Tune resonant frequencies by adjusting the SRR's geometry and dimensions;
-    \item Achieve negative permeability, a crucial requirement for realizing negative-index metamaterials.
-\end{itemize}
-
-SRRs have played a foundational role in the development of negative-index metamaterials and continue to be integral to modern applications such as radio frequency (RF) sensors, metasurfaces, and electromagnetic cloaking devices. By inducing magnetic moments through circulating currents, SRRs effectively mimic the magnetic behavior required for high-frequency manipulation, enabling material responses that are otherwise impossible with natural substances.
-
-
-
-\subsection{SRRs as Microwave Filters}
-Explain the principles behind SRRs acting as resonators in microwave circuits. Emphasize their compact size, frequency selectivity, and how they outperform traditional filter technologies in miniaturized systems.
-
-Split-Ring Resonators (SRRs) are highly effective resonators in microwave circuits, due to their unique structure and ability to resonate at specific electromagnetic frequencies. SRRs are artificial electromagnetic structures used to manipulate electromagnetic waves in various applications, including microwave filters, antennas, and other RF circuits. Their behavior as resonators is primarily due to their LC circuit-like properties, allowing them to selectively respond to electromagnetic fields at specific frequencies.
-
-Principles Behind SRR Resonance in Microwave Circuits
-Structure of SRRs:
-
-SRRs consist of two concentric metallic rings with small gaps or splits in the rings at opposite sides. The metallic rings are usually made of copper or other conductive materials, and the gaps in the rings play a crucial role in their resonant behavior.
-
-The gap in each ring creates a capacitance (C), while the ring itself forms an inductive (L) element due to the circulating current in the rings when they interact with an external electromagnetic field.
-
-
-
-Split-Ring Resonators (SRRs) operate as notch filters by exploiting their resonant properties. As an LC circuit, the SRR resonates at a specific frequency, \( f_0 = \frac{1}{2\pi \sqrt{LC}} \), where \( L \) and \( C \) are the inductance and capacitance of the SRR, respectively. At this resonant frequency, the impedance of the SRR becomes minimal, allowing it to absorb electromagnetic energy and block signals at \( f_0 \). The SRR's frequency selectivity is sharp and can be modeled by the transfer function:
-
-\[
-H(f) = \frac{1}{1 + j \frac{f - f_0}{\Delta f}},
-\]
-
-where \( \Delta f \) represents the bandwidth of the notch, and the quality factor (Q) determines the sharpness of the resonance. A higher Q factor leads to a narrower and more precise notch, enabling SRRs to filter out a narrow band of frequencies while allowing others to pass through. This characteristic makes SRRs ideal for miniaturized microwave circuits, where they function as efficient notch filters for applications such as wireless communication, radar, and RF sensors.
-
-
-LC Resonance:
-
-The SRR functions as a resonant LC circuit (inductance-capacitance), where the inductance comes from the circulating current within the ring and the capacitance comes from the gap in the ring.
-
-When an electromagnetic wave of a specific frequency interacts with the SRR, the structure absorbs energy at its resonant frequency, creating a strong magnetic response. The SRR essentially behaves as a magnetic resonator at this frequency, with the induced currents in the rings mimicking the behavior of a magnetic dipole.
-
-
-
-Resonance Behavior:
-
-The resonance frequency of an SRR depends on the geometry of the rings (such as ring size, gap width, and material properties). At this frequency, the SRR exhibits maximum interaction with the electromagnetic wave, which leads to either resonance absorption (filtering certain frequencies) or radiation of microwave signals in a controlled manner.
-
-The resonance frequency of SRRs can be tuned by altering the size, shape, or orientation of the rings or the gap, offering a high level of control in designing microwave circuits for specific applications.
-
-Magnetic Response:
-
-SRRs are particularly valuable because they can exhibit a magnetic response at microwave frequencies, something that natural materials do not typically provide at these frequencies. This artificial magnetism allows SRRs to manipulate electromagnetic waves in ways that conventional materials cannot.
-
-The resonance in the SRR can enhance or attenuate certain frequency bands of the electromagnetic spectrum, making them ideal for applications like microwave filtering, tuning circuits, and sensors.
-
-Applications of SRRs as Resonators in Microwave Circuits
-Microwave Filters:
-
-SRRs can be used in notch filters, where they selectively block or attenuate specific frequencies while allowing others to pass. This is achieved by tuning the resonant frequency of the SRRs to match the undesired frequency, thereby absorbing or scattering the energy at that frequency.
-
-They can also be used to create band-pass filters that only allow certain frequency bands to pass through, which is useful in communication systems and RF applications.
-
-Tuning and Frequency Control:
-
-SRRs provide excellent frequency selectivity and can be tuned over a broad frequency range by adjusting their geometry. This makes them highly versatile for use in circuits where precise control over the resonant frequency is required, such as in microwave oscillators and sensors.
-
-Compact and Miniaturized Designs:
-
-Due to their subwavelength size, SRRs enable the design of miniaturized microwave circuits, which is essential for modern, space-constrained applications in wireless communication, radar, and microwave systems.
-
-Their ability to operate effectively at small sizes allows for integration into compact systems, such as system-on-chip (SoC) designs and microwave integrated circuits (MICs).
-
-Metamaterials and Metasurfaces:
-
-SRRs are often incorporated into larger metasurfaces or metamaterials that can manipulate electromagnetic waves in sophisticated ways, such as controlling the propagation direction, polarization, or focusing of the waves.
-
-They are used in applications like stealth technology, beam steering, and microwave imaging, where advanced control over wave behavior is necessary.
-
-Advantages Over Traditional Resonators
-Smaller Size: Traditional resonators often require large inductive and capacitive components to achieve resonance, which can be bulky and difficult to integrate into small systems. SRRs, due to their subwavelength size, allow for much smaller resonant circuits without sacrificing performance.
-
-Frequency Tunability: SRRs can be easily tuned by adjusting their geometry, making them more flexible than traditional filters and resonators, which may have limited tuning capabilities.
-
-Enhanced Magnetic Response: SRRs can generate artificial magnetism, which allows for the manipulation of electromagnetic waves in ways that are not possible with conventional materials, particularly at microwave and terahertz frequencies.
-
-1. Compact Size: Split-Ring Resonators (SRRs) are inherently subwavelength structures, meaning they are much smaller than the wavelength of the electromagnetic signal they interact with. This compactness is crucial for modern communication and sensing systems that require miniaturized designs. For example:
-
-Traditional resonators, such as inductors and capacitors used in microwave filters, can occupy a considerable amount of space in a circuit. These components need to have larger physical dimensions to resonate at lower frequencies, leading to bulkier systems.
-
-SRRs, on the other hand, can achieve resonance at similar or even higher frequencies while being significantly smaller. This allows for integration into compact systems, such as system-on-chip (SoC) designs, microwave integrated circuits (MICs), and wearable electronics, where space is at a premium.
-
-Example: In communication devices such as smartphones, the compact size of SRRs enables their use in microwave filters and antenna systems, allowing manufacturers to create smaller, lighter devices without compromising performance.
-
-2. Frequency Selectivity: One of the key advantages of SRRs is their frequency selectivity. Due to their design, SRRs resonate at specific frequencies and can be tailored to interact with electromagnetic waves at those frequencies. This selectivity is highly tunable by adjusting their size, shape, or material properties.
-
-SRRs exhibit sharp resonance peaks at specific frequencies, meaning they can selectively absorb or transmit certain frequencies, which is vital for filtering unwanted signals.
-
-Traditional filters, such as LC circuits (composed of inductors and capacitors), often have broader resonance bands, making them less selective and more prone to signal distortion at their resonant frequency. On the other hand, SRRs provide narrow-band filtering with high precision, allowing them to isolate a specific frequency or narrow band of frequencies without affecting nearby channels.
-
-Example: In wireless communication systems, SRRs can be designed to filter out unwanted noise at specific frequencies, improving signal quality and reducing interference. This precision is especially important in dense, high-frequency environments like 5G and Wi-Fi networks.
-
-3. Advantages Over Traditional Filter Technologies in Miniaturized Systems: SRRs offer several advantages over traditional filter technologies, especially when working with miniaturized systems where size, efficiency, and performance are critical:
-
-Reduced Size and Integration: Traditional filters, such as those based on large inductors and capacitors, take up valuable space in circuits. In contrast, SRRs are highly miniaturized, making them ideal for integration into compact, high-performance systems where size limitations are a concern.
-
-Enhanced Performance in High-Frequency Applications: Traditional components may struggle to perform efficiently at microwave or terahertz frequencies due to their bulk and the difficulty of tuning them at high speeds. SRRs, however, can be designed to resonate at microwave frequencies, making them highly effective for high-frequency filtering applications, such as radar, satellite communications, and medical imaging systems.
-
-Tuning Flexibility: SRRs are highly flexible and can be dynamically tuned to respond to changes in the operating frequency by adjusting the geometry of the resonator or the materials used. Traditional filter technologies often lack this level of tuning flexibility, requiring physical alterations or multiple components to achieve frequency adjustments.
-
-Example: In advanced radar systems, SRRs are used as frequency-selective surfaces that can be dynamically tuned to block specific interference frequencies while allowing desired signal frequencies to pass. Traditional filters would require larger, more complex systems to achieve similar performance, making SRRs the more efficient and effective solution.
-
-4. Application in Modern Systems: SRRs are critical in applications that demand both high performance and small form factors. These applications include:
-
-Wireless Communication: For systems like 5G networks, Wi-Fi, and Bluetooth, SRRs provide enhanced frequency selectivity, low insertion loss, and compactness that are essential for high-speed data transmission in small devices.
-
-Microwave Imaging: In medical imaging and non-destructive testing, SRRs offer narrow-band filtering and high magnetic resonance, which are essential for high-resolution imaging systems.
-
-Wearable Electronics: SRRs are ideal for wearables that require efficient electromagnetic wave control in compact packages, enabling features such as smart sensors and high-frequency communication in small devices.
-
-Conclusion
-In summary, SRRs stand out in microwave circuits and miniaturized systems due to their compact size, precise frequency selectivity, and the superior performance they offer compared to traditional filter technologies. Their ability to be designed for specific frequencies, combined with their miniaturization and tuning flexibility, allows them to fit seamlessly into advanced communication systems, RF applications, and miniaturized electronics where traditional technologies would fall short. As a result, SRRs enable the development of smaller, more efficient devices without compromising on the quality of performance.
-
-
-
-\subsection{Literature Review}
-Survey recent studies and designs of SRR-based filters. Identify common techniques, gaps in performance (e.g., limited tunability, large footprints), and the scope for innovation.
-
-
-Problem statement that our project tries to solve\\ 
-Designing a split ring resonator (SRR) notch filter for 5 GHz offers a compact and effective solution to this problem. By strategically integrating an SRR with a microstrip line, we can create a filter that selectively attenuates signals around the 5 GHz resonant frequency. This allows us to precisely block unwanted interference from other devices operating in this band, thus improving the clarity and reliability of the desired communication signals. The small size of SRRs, often less than one-tenth of the wavelength , makes them particularly attractive for miniaturized devices where space is limited. Therefore, the motivation for this project is to address the growing challenge of RF interference in the 5 GHz band by designing and simulating a compact SRR notch filter capable of selectively eliminating unwanted signals, ensuring better performance for wireless communication systems.
-
-
+\subsection{Theoretical Background of SRR Notch Filters}
 
 \subsection{Motivation and Objectives}
-Clarify the design goals—compactness, sharp notch near 5 GHz, ease of simulation in HFSS. Highlight the novel aspects of your approach and how it addresses the gaps identified.
+To design and simulate a Split Ring Resonator (SRR) structure which resonates at 5 GHz and acts as a notch filter. 
+Objectives: 
+\begin{itemize}
+    \item Operating frequency $ <$ 6GHz
+    \item Sensitivity  $ > 10 $\%
+    \item Size : Compact
+    \item Resonant Frequency : 5GHz
+\end{itemize}
 
 \subsection{Paper Organization}
-Outline the structure of the paper for the reader.
+The next part of the paper is outlined in the following sections. Section XX discusses the design methodology, 
 
 \section{Theoretical Framework}
 
