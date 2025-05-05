@@ -15,8 +15,8 @@ This project involves the design and simulation of a **Split Ring Resonator (SRR
 | **Resonator Type**           | Split Ring Resonator (SRR)              |
 | **Operating Frequency**      | < 6 GHz                                 |
 | **Resonant Frequency**       | 5 GHz                                   |
-| **S11 (Input Reflection)**   | < −10 dB at resonance                   |
-| **S21 (Transmission)**       | < −10 dB at resonance (Notch filter)    |
+| **S11 (Input Reflection)**   | < −5 dB at resonance                   |
+| **S21 (Transmission)**       | > −10 dB at resonance (Notch filter)    |
 | **Sensitivity**              | > 10%                                   |
 | **Size**                     | As compact as possible                  |
 
