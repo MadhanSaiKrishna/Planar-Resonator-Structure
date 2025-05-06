@@ -10,6 +10,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{caption}
+\usepackage{hyperref}
+\usepackage{siunitx}
+
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -22,7 +25,7 @@
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
 khyathisri.basireddy@students.iiit.ac.in \\
-\textbf{Contribution:} Circular SRR design,\\ Quarter wave transformer}
+\textbf{Contribution:} Circular SRR design (Single and \\ Double), Quarter wave transformer}
 \and
 \IEEEauthorblockN{Chamarthy Madhan Sai Krishna}
 \IEEEauthorblockA{\textit{Department of ECE} \\
@@ -36,7 +39,7 @@ chamarthymadhan.k@students.iiit.ac.in\\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
 priyanshi.jain@research.iiit.ac.in\\
-\textbf{Contribution:} --}
+\textbf{Contribution:} Square SRR}
 \and
 % \hspace{2cm}
 \IEEEauthorblockN{Sanjana Sheela}
@@ -44,14 +47,14 @@ priyanshi.jain@research.iiit.ac.in\\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
 sanjana.sheela@students.iiit.ac.in\\
-\textbf{Contribution:} Literature review, Electric coupling,\\ Square SRR}
+\textbf{Contribution:} Literature review, Electric coupling,\\ Square SRR, Report}
 \and
 \IEEEauthorblockN{Snigdha}
 \IEEEauthorblockA{\textit{Department of ECE} \\
 \textit{IIIT Hyderabad}\\
 Gachibowli, India \\
 snigdha.stp@students.iiit.ac.in\\
-\textbf{Contribution:} Quarter Wave Transformer,\\ Impedance Matching }
+\textbf{Contribution:} Quarter Wave Transformer,\\ Impedance Matching, Report }
 \and
 }
 
@@ -105,7 +108,7 @@ Size                & As compact as possible \\ \hline
 \end{table}
 
 \subsection{Paper Organization}
-The next part of the paper is organized as follows: Section II provides a theoretical framework for understanding the electromagnetic principles behind SRRs and their coupling mechanisms. Section III outlines the design methodology, including substrate selection, topology choice, and parametric analysis. Section IV details the simulation methodology using Ansys HFSS, including model creation and parameter sweeps. Section V presents the results and analysis of the simulation, focusing on resonance frequency, quality factor, and S-parameter results. Finally, Section VI concludes the paper with a summary of findings and future work.
+The next part of the paper is organized as follows: Section II provides a theoretical framework for understanding the electromagnetic principles behind SRRs and their equivalent circuit models. Section III outlines the simulation methodology, including the HFSS environment setup, material properties, and post-processing methods. Section IV details the design methodology, including substrate selection, SRR topology selection, and coupling mechanisms. Section V presents the results and analysis of the designed notch filter, including S-parameter results and quality factor calculations. Finally, Section VI concludes the paper with a summary of findings and future work.
 
 \section{Theoretical Framework}
 
@@ -192,7 +195,7 @@ SRR Interpretation:
     \item This gap acts as a capacitor, with value dependent on gap size, area, and permittivity.
     \item The SRR behaves as an LC circuit, with resonant frequency:
     \[
-    f_r = \frac{1}{2\pi\sqrt{LC}}
+    f_o = \frac{1}{2\pi\sqrt{LC}}
     \]
 \end{itemize}
 
@@ -326,26 +329,6 @@ Electric coupling, on the other hand, occurs due to the interaction between the 
 
 In practical configurations, both types of coupling can occur simultaneously. The relative orientation, gap alignment, and distance between SRRs can be strategically modified to fine-tune the overall coupling strength and resonance characteristics. This tunability is essential in designing components for metamaterials, reconfigurable filters, high-sensitivity sensors, and antennas.
 
-\section{Design Methodology}
-
-\subsection{Design Requirements and Specifications}
-List the required performance: 5 GHz center, target bandwidth, notch depth, substrate limitations, and footprint constraints.
-
-\subsection{Substrate Selection and Microstrip Design}
-Describe chosen substrate (e.g., FR4 or Rogers), its dielectric constant, thickness, and loss tangent. Calculate 50-ohm microstrip width.
-
-\subsection{SRR Topology Selection}
-Compare various geometries (square, circular, spiral). Justify your selection based on performance and ease of fabrication.
-
-\subsection{Parametric Analysis Framework}
-Outline which parameters (gap, ring width, spacing) are to be swept in simulation. Describe your approach to optimization.
-
-\subsection{Coupling Configuration}
-Describe SRR placement relative to the microstrip. Provide geometry layout and explain expected coupling mode.
-
-\subsection{Expected Performance}
-Estimate resonant frequency using derived equations. Predict notch depth and bandwidth.
-
 \section{Simulation Methodology}
 The numerical method used in HFSS is the Finite Element Method (FEM). In this method a structure is subdivided into many small subsections called finite elements. In HFSS these finite elements are in the form of tetrahedra. The entire collection of tetrahedra constitutes the finite element mesh. A solution is found for the fields within these tetrahedra. These fields are
 interrelated so that Maxwell’s Equations are satisfied across inter-element boundaries yielding a field solution for the entire original structure. Once the field solution is found, the generalized S matrix solution is determined.
@@ -353,16 +336,247 @@ The tool also uses the automatic adaptive mesh refinement process to solve an EM
 
 
 \subsection{HFSS Simulation Environment Setup}
-Describe the overall simulation environment and settings.
+The simulation was conducted in Ansys HFSS, where boundary conditions and excitations were assigned to both 2D sheet and 3D object faces. A finite solution space was created using an air box with appropriate open boundary conditions. Mesh generation and adaptive frequency sweeps were used to ensure convergence and accurate field solutions across the desired frequency range.
 
 \subsection{Material Properties and Model Creation}
-Assign dielectric and conductor properties. Detail 3D model dimensions and layers in HFSS.
+Conductor and dielectric properties were assigned to respective parts of the model. Metal parts such as the SRR and ground plane were modeled using Perfect Electric Conductor (PEC) boundaries, and the dielectric substrate was defined with appropriate permittivity. A 3D layered geometry was created with accurate dimensions, including the SRR patterned on a dielectric slab placed above a ground plane. Ports were aligned with the transmission line ends to ensure proper excitation.
 
 \subsection{Excitation and Boundary Conditions}
-Explain port settings and boundary types (e.g., radiation boundary). Validate open-space behavior.
+Lumped ports were placed at both ends of the transmission line to simulate input and output excitation. These ports were defined internally to the solution space with a specific impedance, allowing the extraction of modal voltages and currents. For boundary conditions, three types were primarily used:
+\begin{itemize}
+    \item Perfect H on surfaces perpendicular to SRR and ports to simulate magnetic wall conditions.
+    \item Radiation boundary on outer faces of the air box to simulate an open environment and absorb outgoing waves,
+    \item Perfect Electric Conductor (PEC) on the SRR and ground plane to model ideal metal surfaces with zero tangential electric fields.
+\end{itemize}
 
 \subsection{Post-Processing Methods}
-Outline how S-parameters, return loss, and electric/magnetic fields were extracted and visualized.
+S-parameters such as \( S_{11} \) and \( S_{21} \) were calculated from the lumped port responses to evaluate filter performance. Return loss was derived from the magnitude of \( S_{11} \), indicating the amount of signal reflected. Field distributions of electric and magnetic fields were visualized at resonance to understand coupling mechanisms and energy confinement in the SRR structure. These results helped verify the effectiveness of the filter design and identify regions of strong resonance and field enhancement.
+
+
+\section{Design Methodology}
+Need to design a notch filter using SRR topology there should be a sharp rejection at 5 Ghz  ith low loss outside the notch and compact dimensions.
+
+\subsection{Substrate Selection and Microstrip Design}
+The substrate acts as the dielectric medium that supports both the SRR and the microstrip transmission line. Several key parameters must be evaluated when selecting a suitable substrate:
+
+Using \textbf{FR4} as a substrate for a Split Ring Resonator (SRR) offers several benefits:
+
+\begin{itemize}
+    \item \textbf{Low Dielectric Loss}: FR4 has low dielectric loss, which is crucial for high-frequency applications, ensuring minimal signal degradation and improved efficiency.
+    \item \textbf{Thermal Stability}: FR4 provides excellent thermal stability, making it suitable for environments with varying temperatures without compromising performance.
+    \item \textbf{High Dielectric Strength}: FR4 has high dielectric strength, making it reliable under higher voltages and reducing the risk of breakdown.
+    \item \textbf{Stable Dielectric Properties}: FR4's dielectric properties are stable across a wide frequency range, which is important for SRRs that may operate in different parts of the spectrum.
+    \item \textbf{Chemical Inertness}: FR4 is chemically inert and resistant to many solvents, ensuring consistent performance in diverse environmental conditions.
+    \item \textbf{Low Loss Tangent}: The low loss tangent of FR4 minimizes energy dissipation, contributing to more efficient resonator behavior.
+    \item \textbf{Ease of Fabrication}: FR4 is easy to fabricate, making it a practical choice for precision SRR structures where consistency in fabrication is essential.
+\end{itemize}
+
+Overall, FR4 offers a combination of low loss, high stability, and ease of processing, making it an ideal substrate material for SRR applications.
+
+
+
+
+When selecting the metal for a Split Ring Resonator (SRR)-based notch filter, you should consider the following factors:
+
+\begin{itemize}
+    \item \textbf{High Conductivity}: The metal should have excellent electrical conductivity to minimize resistive losses at high frequencies.
+    \item \textbf{Skin Effect}: The material should allow efficient current flow at the surface at high frequencies, reducing power losses.
+    \item \textbf{Mechanical Properties}: The metal should have good strength and ductility for easy fabrication of precise SRR structures.
+    \item \textbf{Cost-Effectiveness}: The metal should be affordable while providing the necessary performance for the application.
+    \item \textbf{Corrosion Resistance}: The material should be resistant to corrosion or be easily protected with coatings to ensure long-term reliability.
+    \item \textbf{Availability}: The metal should be readily available in various forms for ease of processing and sourcing.
+    \item \textbf{Thermal Conductivity}: The metal should dissipate heat effectively to prevent overheating, particularly in high-power applications.
+\end{itemize}
+
+Given these factors, \textbf{copper} is often the material of choice for SRR-based notch filters. It offers excellent electrical conductivity, low resistive losses, and good thermal conductivity. Copper is also easy to fabricate and cost-effective, making it suitable for a wide range of RF applications. While it may corrode over time, its natural patina offers some protection, and additional coatings can enhance its resistance. Copper balances performance, cost, and manufacturability, making it a reliable and practical choice for SRR-based notch filters.
+
+\subsection{SRR Topology Selection}
+We need to design a Split Ring Resonator (SRR) due to its compact size, low losses, and easy integration into planar structures like PCBs. SRRs offer design flexibility, as their resonant frequency can be tuned by adjusting parameters. They provide a wide bandwidth, making them suitable for broad-frequency applications, and are effective in magnetic resonance, ideal for metamaterials. Additionally, SRRs achieve a high Q factor, making them useful for applications like filters. These advantages make SRRs an excellent choice for RF and microwave applications.
+
+
+\subsubsection{Single Ring SRR}
+The Split Ring Resonator (SRR) was chosen for this application due to its compact size, efficiency, and ease of integration into planar circuits. Its simple design allows for precise frequency resonance while minimizing resistive losses. The SRR's resonant frequency can be easily tuned by adjusting its geometry, making it highly adaptable for specific filtering requirements. Additionally, its high Q factor ensures sharp frequency rejection, making the SRR an ideal choice for this notch filter application.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/single_ring_srr_transmission_line.png}
+    \caption{HFSS Simulation of single ring SRR}
+    % \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-05 at 19.06.00_49c8992b.jpg}
+    \caption{S-Parameter plot for single ring SRR}
+    % \label{fig:enter-label}
+\end{figure}
+
+
+According to the S-parameter results, the resonant frequency specification at 5\,GHz is successfully met; however, the values of \( S_{11} \) (input reflection) and \( S_{21} \) (forward transmission) do not satisfy the required performance criteria. Hence, the coupling is not strong enough
+
+\subsubsection{SRR with attached transmission line}
+The coupling gets stronger as SRR is closer to the transmission line.
+
+The proximity allows the stronger magnetic ( time varying magnetic field from the transmission line induced currents in the SRR more effectively)  and electric coupling (Depending on orientation, the electric field from the line can also induce polarization in the SRR, especially if gaps are aligned with the field direction).
+
+This strong field interaction enhances energy transfer between the line and the resonator, leading to Stronger resonance effects (deeper notches in filters)
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/transmissionthing.png}
+    \caption{HFSS of attached transmission line}
+    % \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/attached tranmission line.png}
+    \caption{S-Parameter of the attached transmission line}
+    % \label{fig:enter-label}
+\end{figure}
+
+
+Our goal is better coupling and better resonance frequency 
+
+
+\subsubsection{Double ring SRR with attached transmission line}
+In order to get better coupling we have introduced another ring inside the existing one.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-05 at 21.11.26_959ad83c.jpg}
+    \caption{HFSS of Double ring SRR with attached transmission line}
+    % \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-05 at 21.13.55_aaad92d6.jpg}
+    \caption{S-Parameter of Double ring with attached transmission line}
+    % \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/notmatchingzplot.png}
+    \caption{Z-Plot of Double Ring with attached transmission line}
+    % \label{fig:enter-label}
+\end{figure}
+
+As we can see in the Z-plot the impedance is not matched using this topology.
+All the other specifications are satisfied.
+
+\subsubsection{Using Quarter Wave transformer}
+The impedance is not matched in the above topology so we added a quarter wave transformer to match the impedance.
+
+\textit{\textbf{Impedance Matching using Quarter Wave Transformer}}
+We can observe that the $S_{11}$ in the SRR with attached transmission line is \SI{-1.52}{\decibel}. 
+
+\subsection*{Load Impedance Calculation}
+
+We now calculate the load impedance ($Z_L$) at Port 1 using the following formula:
+
+\begin{equation}
+Z_L = Z_0 \left( \frac{1 + S_{11}}{1 - S_{11}} \right)
+\end{equation}
+
+First, convert $S_{11}$ from decibels to linear scale:
+
+\begin{equation}
+S_{11,\text{linear}} = 10^{\left(\frac{-1.52}{20}\right)} \approx 0.840
+\end{equation}
+
+Substituting into the formula:
+
+\begin{equation}
+Z_L = 50 \left( \frac{1 + 0.840}{1 - 0.840} \right) = 50 \left( \frac{1.840}{0.160} \right) \approx \SI{575}{\ohm}
+\end{equation}
+
+\subsection*{Reflection and Matching}
+
+We observe that $Z_L \ne Z_0$, where $Z_0 = \SI{50}{\ohm}$. 
+
+This implies that the load is \textbf{mismatched}, and a reflected wave exists on the transmission line. 
+
+For \textbf{maximum power transfer}, the load should be \textbf{matched} to the transmission line, i.e., $Z_L = Z_0$, so that there is no reflection:
+
+\[
+\Gamma = 0 \quad \text{or} \quad S_{11} = 0
+\]
+
+To achieve impedance matching and eliminate reflections, we use shorted sections of transmission lines designed to transform the load impedance to match $Z_0$.
+
+A mismatched load $Z_L$ can be properly matched to a line (with characteristic impedance $Z_0$) by inserting a transmission line $\lambda/4$ long before the load (with characteristic impedance $Z_0'$), known as a \textit{quarter-wave transformer}. $Z_0'$ is selected such that the input impedance matches the line:
+
+\begin{equation}
+Z_0' = \sqrt{Z_0 Z_L}
+\end{equation}
+
+\subsection*{Calculations:}
+
+\begin{itemize}
+    \item Load impedance, \( Z_L = \SI{22.0647}{\ohm} \)
+    \item Characteristic impedance of the main line, \( Z_0 = \SI{50}{\ohm} \)
+    \item Substrate height, \( h = \SI{1.6}{\milli\meter} \)
+    \item Relative permittivity (dielectric constant), \( \varepsilon_r = 4.4 \)
+    \item Speed of light, \( c = \SI{3e8}{\meter\per\second} \)
+    \item Resonant frequency, \( f = \SI{5e9}{\hertz} \)
+\end{itemize}
+
+\subsection*{Step 1: Required Impedance of the Quarter-Wave Transformer}
+
+\begin{equation}
+Z_0' = \sqrt{Z_0 Z_L} = \sqrt{50 \times 22.0647} \approx \SI{33.21}{\ohm}
+\end{equation}
+
+\subsection*{Step 2: Effective Dielectric Constant \( \varepsilon_{\text{eff}} \)}
+
+Assuming \( \frac{w}{h} = 1 \Rightarrow w = h \):
+
+\begin{equation}
+\varepsilon_{\text{eff}} = \frac{\varepsilon_r + 1}{2} + \frac{\varepsilon_r - 1}{2} \left( \frac{1}{\sqrt{1 + 12 \cdot \frac{h}{w}}} \right) \end{equation}
+\begin{equation}
+= \frac{4.4 + 1}{2} + \frac{4.4 - 1}{2} \left( \frac{1}{\sqrt{13}} \right) \approx 3.26
+\end{equation}
+
+\subsection*{Step 3: Wavelength in the Medium}
+
+\begin{equation}
+\lambda = \frac{c}{f \sqrt{\varepsilon_{\text{eff}}}} 
+= \frac{3 \times 10^8}{5 \times 10^9 \sqrt{3.26}} 
+\approx \SI{26.2}{\milli\meter}
+\end{equation}
+
+\subsection*{Step 4: Quarter-Wavelength Length}
+
+\begin{equation}
+l = \frac{\lambda}{4} = \frac{26.2}{4} \approx \SI{6.55}{\milli\meter}
+\end{equation}
+
+\subsection*{Final Quarter-Wave Transformer Parameters}
+
+\begin{itemize}
+    \item Required impedance, \( Z_0' = \SI{33.21}{\ohm} \)
+    \item Effective dielectric constant, \( \varepsilon_{\text{eff}} \approx 3.26 \)
+    \item Width of the transformer (assumed), \( w = \SI{1.6}{\milli\meter} \)
+    \item Quarter-wave transformer length, \( l \approx \SI{6.55}{\milli\meter} \)
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-06 at 06.33.22_90f1b653.jpg}
+    \caption{HFSS with quarter wave transformer}
+    % \label{fig:enter-label}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-06 at 06.31.47_409a2904.jpg}
+    \caption{S-Parameter Plot of SRR using Quarter Wave Transfomer}
+    % \label{fig:enter-label}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/WhatsApp Image 2025-05-06 at 06.32.06_5ce3b829.jpg}
+    \caption{Z-parameter Plot of SRR using Quarter Wave Transformer }
+    % \label{fig:enter-label}
+\end{figure}
+
 
 \section{Results and Analysis}
 Final Double Ring SRR Design: 5 GHz Notch Filter
@@ -375,6 +589,37 @@ Final Double Ring SRR Design: 5 GHz Notch Filter
 \subsection{Resonance Frequency}
 
 From the simulation results (S - Parameter plot), the resonant frequency is observed to be 4.96 GHz. The notch filter exhibits a sharp notch at this frequency, indicating effective filtering of signals around this frequency.
+\textit{Inductance:}\\
+\begin{equation}
+L = \mu_0 \left( R + \frac{W}{2} \right) \left( \ln \left( \frac{8 \left( R + \frac{W}{2} \right)}{h + W} \right) - 0.5 \right)
+\end{equation}
+\textit{Capacitance between the Rings:}
+\begin{equation}
+C_{\text{gap}} = \varepsilon_0 \left[ \frac{wh}{g} + \frac{2\pi h}{\ln\left(\frac{2.4h}{w}\right)} \right]
+\end{equation}
+\textit{Total Capacitance:}
+\begin{equation}
+C_{\text{total}} = C_{\text{gap}} + C_{\text{surface}}
+\end{equation}
+\textit{Resonant Frequency:}
+\begin{equation}
+f_r = \frac{1}{2\pi \sqrt{L C_{\text{total}}}}
+\end{equation}
+\textit{Design Target:}
+To achieve a target resonant frequency of:
+\[
+f_r = \SI{5}{\giga\hertz}
+\]
+\subsection*{Initial Parameters (Example Values):}
+\begin{itemize}
+    \item Mean radius of ring, \( R = \SI{1.2}{\milli\meter} \)
+    \item Width of ring trace, \( W = \SI{0.4}{\milli\meter} \)
+    \item Substrate thickness, \( h = \SI{0.8}{\milli\meter} \)
+    \item Gap between rings, \( g = \SI{0.2}{\milli\meter} \)
+    \item Ring conductor width, \( w = \SI{0.4}{\milli\meter} \)
+    \item Vacuum permittivity, \( \varepsilon_0 = \SI{8.854e-12}{\farad\per\meter} \)
+    \item Permeability of free space, \( \mu_0 = \SI{1.257e-6}{\henry\per\meter} \)
+\end{itemize}
 
 \subsection{Quality Factor}
 The quality factor (Q-factor) is a measure of the sharpness of the resonance peak. It is defined as the ratio of the resonant frequency to the bandwidth of the filter. A higher Q-factor indicates a sharper resonance and better selectivity. The Q-factor can be calculated using the formula:
@@ -416,12 +661,15 @@ Final Z-parameter results for the designed SRR notch filter are shown in the fol
 
 The marker m2 represents the impedance matching point, which is at 50 ohms. The Z11 parameter shows a good return loss at the notch frequency, indicating effective impedance matching. 
 
-\begin{figure}[h]
+\begin{figure}
 \centering
     \includegraphics[width=0.5\textwidth]{Images/Final_Z_Param_Plot.jpg}
     \caption{Z-parameter results for the designed SRR notch filter.}
     % \label{fig:SRR_circuit}
 \end{figure}
+
+\subsection{Operating frequency}
+The frequency at which the designed system operates is 4.96 GHz. The system is designed to operate in the 5 GHz band, which is commonly used for wireless communication systems, including Wi-Fi and Bluetooth applications. The notch filter effectively attenuates signals around this frequency, providing a means to mitigate interference from unwanted signals.
 
 \section{Conclusion}
 \subsection{Summary of Findings}
@@ -433,6 +681,12 @@ The designed SRR notch filter is a planar structure that can be easily integrate
 \subsection{Limitations and Future Work}
 The current SRR-based notch filter design has limitations, including a fixed notch frequency without tunability, reliance on idealized simulations that do not account for real-world factors like fabrication tolerances and substrate losses, and the absence of experimental validation. Future work could focus on integrating varactors or PIN diodes to enable tunable or switchable rejection, developing multi-band configurations by combining multiple SRRs, coupling the filter with wideband antennas for system-level analysis, and exploring advanced substrates to enhance miniaturization and performance.
 
+\subsection{HFSS Project Files:}
+\href{https://github.com/MadhanSaiKrishna/Planar-Resonator-Structure}{Github Repository containing all the project files.} \\
+\href{https://iiithydstudents-my.sharepoint.com/my?id=%2Fpersonal%2Fchamarthymadhan%5Fk%5Fstudents%5Fiiit%5Fac%5Fin%2FDocuments%2FSRR&ga=1}{Onedrive Folder containing all the resources gathered during the project.}  
+
+
+
 
 \begin{thebibliography}{00}
 \bibitem{b1} S. Dasi, S. Dasi and G. M. Rao, "Design and Analysis of a Meta Material based Nested Circular Split Ring Resonator for Terahertz Applications," 2022 International Conference on Automation, Computing and Renewable Systems (ICACRS), Pudukkottai, India, 2022, pp. 178-181, doi: 10.1109/ICACRS55517.2022.10029069.
@@ -440,21 +694,33 @@ The current SRR-based notch filter design has limitations, including a fixed not
 \bibitem{b2}C. Saha and J. Y. Siddiqui, "A comparative analyis for split ring resonators of different geometrical shapes," 2011 IEEE Applied Electromagnetics Conference (AEMC), Kolkata, India, 2011, pp. 1-4, doi: 10.1109/AEMC.2011.6256871.
 
 \bibitem{b3}
+Band-stop filter design based on split ring resonators loaded on the microstrip 
+transmission line for GSM-900 and 2.4 GHz ISM band https://dergipark.org.tr/en/download/article-file/1034899
 
 \bibitem{b4}
+Analysis and Design of Direct Coupled Metamaterial Filters for Wireless Communication
+
 
 \bibitem{b5}
+Compact Microstrip Band Stop Filter Using SRR and CSSR: Design, Simulation and Results
 
 \bibitem{b6}
+Design and Analysis of a Meta Material based Nested Circular Split Ring Resonator for Terahertz Applications 
 
 \bibitem{b7}
+Electromagnetic Metamaterial Based Sensor Design for Chemical Discrimination 
 
 \bibitem{b8}
+FEM Modelling of Split Ring Resonator Based Metamaterials for UWB Notch Filter Applications
 
 \bibitem{b9}
+DESIGN AND ANALYSIS OF SQUARE SPLIT RING RESONATOR METAMATERIAL FOR MICROWAVE FREQUENCY RANGE
 
 \bibitem{b10}
+Metamaterial based CPW band stop filter for WLAN application 
 
+\bibitem{b11}
+Utilization of Split Ring Resonator for Compact Narrowband Microstrip Bandpass Filter
 \end{thebibliography}
 
 \end{document}
