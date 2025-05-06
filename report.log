@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.4.24)  6 MAY 2025 04:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.4.24)  6 MAY 2025 07:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -313,7 +313,101 @@ Underfull \vbox (badness 1173) has occurred while \output is active []
  [1{C:/Users/madha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
-] [2]
+]
+<Images/Single_Ring_SRR.png, id=16, 634.37pt x 618.31pt>
+File: Images/Single_Ring_SRR.png Graphic file (type png)
+<use Images/Single_Ring_SRR.png>
+Package pdftex.def Info: Images/Single_Ring_SRR.png  used on input line 205.
+(pdftex.def)             Requested size: 103.19843pt x 100.58267pt.
+<Images/Single_Circular_Equivalent_model.png, id=17, 780.9175pt x 839.135pt>
+File: Images/Single_Circular_Equivalent_model.png Graphic file (type png)
+<use Images/Single_Circular_Equivalent_model.png>
+Package pdftex.def Info: Images/Single_Circular_Equivalent_model.png  used on input line 212.
+(pdftex.def)             Requested size: 103.19843pt x 110.88396pt.
+<Images/Double_Ring_SRR.png, id=18, 153.57375pt x 145.54375pt>
+File: Images/Double_Ring_SRR.png Graphic file (type png)
+<use Images/Double_Ring_SRR.png>
+Package pdftex.def Info: Images/Double_Ring_SRR.png  used on input line 231.
+(pdftex.def)             Requested size: 103.19843pt x 97.80249pt.
+<Images/Double_Circular_Equivalent_modle.png, id=19, 865.2325pt x 461.725pt>
+File: Images/Double_Circular_Equivalent_modle.png Graphic file (type png)
+<use Images/Double_Circular_Equivalent_modle.png>
+Package pdftex.def Info: Images/Double_Circular_Equivalent_modle.png  used on input line 238.
+(pdftex.def)             Requested size: 154.80157pt x 82.60669pt.
+ [2 <./Images/Single_Ring_SRR.png (PNG copy)> <./Images/Single_Circular_Equivalent_model.png (PNG copy)>]
+<Images/Double_Ring_SRR_Transmission_line.png, id=29, 301.125pt x 260.975pt>
+File: Images/Double_Ring_SRR_Transmission_line.png Graphic file (type png)
+<use Images/Double_Ring_SRR_Transmission_line.png>
+Package pdftex.def Info: Images/Double_Ring_SRR_Transmission_line.png  used on input line 287.
+(pdftex.def)             Requested size: 129.0pt x 111.80292pt.
+<Images/With_Transmission_line_Equivalent.png, id=30, 1636.1125pt x 649.42625pt>
+File: Images/With_Transmission_line_Equivalent.png Graphic file (type png)
+<use Images/With_Transmission_line_Equivalent.png>
+Package pdftex.def Info: Images/With_Transmission_line_Equivalent.png  used on input line 294.
+(pdftex.def)             Requested size: 129.0pt x 51.20204pt.
+
+Underfull \vbox (badness 2096) has occurred while \output is active []
+
+<Images/transmission_line_quarter_wave.jpg, id=31, 963.6pt x 313.9228pt>
+File: Images/transmission_line_quarter_wave.jpg Graphic file (type jpg)
+<use Images/transmission_line_quarter_wave.jpg>
+Package pdftex.def Info: Images/transmission_line_quarter_wave.jpg  used on input line 315.
+(pdftex.def)             Requested size: 258.0pt x 84.05135pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 315--316
+ [][] 
+ []
+
+[3 <./Images/Double_Ring_SRR.png (PNG copy)> <./Images/Double_Circular_Equivalent_modle.png (PNG copy)> <./Images/Double_Ring_SRR_Transmission_line.png (PNG copy)> <./Images/With_Transmission_line_Equivalent.png (PNG copy)> <./Images/transmission_line_quarter_wave.jpg>]
+<Images/final_double_ring_srr.jpg, id=35, 946.28531pt x 599.99156pt>
+File: Images/final_double_ring_srr.jpg Graphic file (type jpg)
+<use Images/final_double_ring_srr.jpg>
+Package pdftex.def Info: Images/final_double_ring_srr.jpg  used on input line 371.
+(pdftex.def)             Requested size: 258.0pt x 163.58372pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 371--372
+ [][] 
+ []
+
+[4 <./Images/final_double_ring_srr.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 390--392
+
+ []
+
+<Images/final_dielectric_sensitivity.jpg, id=39, 963.6pt x 589.4522pt>
+File: Images/final_dielectric_sensitivity.jpg Graphic file (type jpg)
+<use Images/final_dielectric_sensitivity.jpg>
+Package pdftex.def Info: Images/final_dielectric_sensitivity.jpg  used on input line 396.
+(pdftex.def)             Requested size: 258.0pt x 157.82306pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 396--397
+ [][] 
+ []
+
+<Images/Fiinal_S_Param_Plot.jpg, id=40, 963.6pt x 460.72125pt>
+File: Images/Fiinal_S_Param_Plot.jpg Graphic file (type jpg)
+<use Images/Fiinal_S_Param_Plot.jpg>
+Package pdftex.def Info: Images/Fiinal_S_Param_Plot.jpg  used on input line 408.
+(pdftex.def)             Requested size: 258.0pt x 123.35596pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 408--409
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Images/Final_Z_Param_Plot.jpg, id=41, 963.6pt x 465.23813pt>
+File: Images/Final_Z_Param_Plot.jpg Graphic file (type jpg)
+<use Images/Final_Z_Param_Plot.jpg>
+Package pdftex.def Info: Images/Final_Z_Param_Plot.jpg  used on input line 421.
+(pdftex.def)             Requested size: 258.0pt x 124.56532pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 421--422
+ [][] 
+ []
+
+[5 <./Images/final_dielectric_sensitivity.jpg> <./Images/Fiinal_S_Param_Plot.jpg> <./Images/Final_Z_Param_Plot.jpg>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -325,7 +419,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
+[6
 
 ] (report.aux)
  ***********
@@ -334,17 +428,17 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5554 strings out of 474486
- 93139 string characters out of 5743755
+ 5660 strings out of 474486
+ 96862 string characters out of 5743755
  1945542 words of memory out of 5000000
- 27795 multiletter control sequences out of 15000+600000
- 594449 words of font info for 106 fonts, out of 8000000 for 9000
+ 27897 multiletter control sequences out of 15000+600000
+ 596454 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,743b,290s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (3 pages, 133027 bytes).
+ 57i,11n,65p,743b,295s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/madha/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (6 pages, 1471378 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 118 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
