@@ -21,3 +21,5 @@ This project involves the design and simulation of a **Split Ring Resonator (SRR
 | **Size**                     | As compact as possible                  |
 
 ---
+
+Onedrive Link for project resources - https://iiithydstudents-my.sharepoint.com/:f:/g/personal/chamarthymadhan_k_students_iiit_ac_in/Eq2zilUA871Moks_zJo5vtkBz9iZ7dCXfrMi6FTOzFadvg?e=OEc8QA
